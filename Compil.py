@@ -19,7 +19,7 @@ with open("main.html", "r") as err:
 
 with open("main.html", "r") as file:
     if (body == False):
-        print("НАШЕЛ ОШИБКИ В КОДЕ НЕsТУ endlhtml")
+        print("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml")
         exit()
     elif (css_err == False):
         print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
@@ -53,7 +53,7 @@ with open("main.html", "r") as file:
             css = True
             continue
         elif (line.startswith("basic")) and css == True:
-            css == False
+            css = False
             baseCSS()
             continue
         elif (css == True):
