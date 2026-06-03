@@ -1,4 +1,4 @@
-from Compl.base import baseCSS, create_directories, appendf, create_html_start
+from Compl.base import baseCSS, create_directories, appendf, create_html_start, css_logic
 
 create_directories()
 
@@ -56,13 +56,12 @@ with open("main.html", "r") as file:
             css = False
             baseCSS()
             continue
+        elif (line.startswith("import ")) and css == True:
+            with open(line[7:], "r") as imp:
+                for eline in imp:
+                    css_logic(eline)
         elif (css == True):
-            if (line.startswith("talign: ")):
-                appendf("src/css/style.css", f"    text-align: {line[8:].strip()}")
-            elif (line.startswith("fsize: ")):
-                appendf("src/css/style.css", f"    font-size: {line[7:].strip()};")
-            else:
-                appendf("src/css/style.css", line)
+            css_logic(line)
             continue
         elif (html == True) and (meta == True):
             appendf("src/index.html", line)

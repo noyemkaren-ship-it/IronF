@@ -2,9 +2,9 @@ import os
 from util import base_css
 
 def baseCSS():
-    global base_css
     with open("src/css/style.css", "w") as file:
         file.write(base_css)
+
 
 def create_html_start():
     with open("src/index.html", "w") as file:
@@ -23,3 +23,11 @@ def create_directories():
 def appendf(filename: str, line: str):
     with open(filename, "a") as file:
         file.write(line + "\n")
+
+def css_logic(eline):
+    if (eline.startswith("talign: ")):
+        appendf("src/css/style.css", f"    text-align: {eline[8:].strip()}")
+    elif (eline.startswith("fsize: ")):
+        appendf("src/css/style.css", f"    font-size: {eline[7:].strip()};")
+    else:
+        appendf("src/css/style.css", eline)
