@@ -1,0 +1,68 @@
+from Compl.base import baseCSS, create_directories, appendf, create_html_start
+
+create_directories()
+
+css = False
+html = False
+script = False
+meta = False
+body = False
+name = ""
+
+with open("main.html", "r") as err:
+    for line in err:
+        if (line.startswith("endhtml")):
+            body = True
+
+with open("main.html", "r") as file:
+    if (body == False):
+        print("НАЙДИНА ОШИБКА, В КОДЕ НЕТ endhtml ХОТЯ ОН ОБЯЗАТЕЛЕН!")
+        exit
+
+    for line in file:
+        if (line.startswith("html")):
+            html = True
+            css = False
+            continue
+        if (line.startswith("jscript")):
+            script = True
+            html = False
+            css = False
+            continue
+        if (line.startswith("endhtml")):
+            html = False
+            appendf('src/index.html', "</body>\n")
+            appendf('src/index.html', "</html>\n")
+            continue
+        elif (line.startswith("meta ")):
+            name = line[5:]
+            create_html_start()
+            appendf("src/index.html", f"    <title>{line.strip()}</title>\n")
+            appendf('src/index.html', '<script src="scripts/main.js"></script>\n')
+            appendf('src/index.html', "</head>\n")
+            appendf('src/index.html', "<body>")
+            meta = True
+            continue
+        if (line.startswith("css")):
+            css = True
+            continue
+        elif (line.startswith("basic")) and css == True:
+            css == False
+            baseCSS()
+            continue
+        elif (css == True):
+            if (line.startswith("talign: ")):
+                appendf("src/css/style.css", f"    text-align: {line[8:].strip()}")
+            elif (line.startswith("fsize: ")):
+                appendf("src/css/style.css", f"    font-size: {line[7:].strip()};")
+            else:
+                appendf("src/css/style.css", line)
+            continue
+        elif (html == True) and (meta == True):
+            appendf("src/index.html", line)
+            continue
+        elif (script == True):
+            appendf("src/scripts/main.js", line)
+            continue
+
+            
