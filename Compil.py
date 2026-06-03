@@ -22,8 +22,8 @@ with open("main.html", "r") as file:
         print("НАШЕЛ ОШИБКИ В КОДЕ НЕsТУ endlhtml")
         exit()
     elif (css_err == False):
-        exit()
         print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
+        exit()
 
     for line in file:
         if (line.startswith("html")):
