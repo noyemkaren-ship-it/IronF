@@ -7,17 +7,23 @@ html = False
 script = False
 meta = False
 body = False
+css_err = False
 name = ""
 
 with open("main.html", "r") as err:
     for line in err:
         if (line.startswith("endhtml")):
             body = True
+        elif (line.startswith("css")):
+            css_err = True
 
 with open("main.html", "r") as file:
     if (body == False):
-        print("НАЙДИНА ОШИБКА, В КОДЕ НЕТ endhtml ХОТЯ ОН ОБЯЗАТЕЛЕН!")
-        exit
+        print("НАШЕЛ ОШИБКИ В КОДЕ НЕsТУ endlhtml")
+        exit()
+    elif (css_err == False):
+        exit()
+        print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
 
     for line in file:
         if (line.startswith("html")):
