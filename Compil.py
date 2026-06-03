@@ -1,15 +1,8 @@
 from Compl.base import baseCSS, create_directories, appendf, create_html_start, css_logic, create_js_clasic
+from Compl.util import *
+
 create_directories()
 create_js_clasic()
-
-
-css = False
-html = False
-script = False
-meta = False
-body = False
-css_err = False
-name = ""
 
 with open("main.html", "r") as err:
     for line in err:
