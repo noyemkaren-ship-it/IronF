@@ -1,6 +1,7 @@
-from Compl.base import baseCSS, create_directories, appendf, create_html_start, css_logic
-
+from Compl.base import baseCSS, create_directories, appendf, create_html_start, css_logic, create_js_clasic
 create_directories()
+create_js_clasic()
+
 
 css = False
 html = False

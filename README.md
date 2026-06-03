@@ -97,7 +97,31 @@ endhtml
 ⚠️ endhtml обязателен. Забудешь — компилятор поругается!
 📌 Секция JScript
 
-Обычный JavaScript. Без упрощений, без магии:
+## 🎯 Упрощённый JavaScript (фишка IronF!)
+
+IronF автоматически добавляет полезные функции, чтобы тебе не приходилось писать скучный код:
+
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `print(text)` | Показывает всплывающее окно | `print("Привет!")` |
+| `put(text)` | Выводит в консоль (для отладки) | `put("Клик по кнопке")` |
+| `getElement(id)` | Находит элемент на странице | `let btn = getElement("myButton")` |
+| `setText(id, text)` | Меняет текст внутри элемента | `setText("title", "Новый заголовок")` |
+
+**Пример использования:**
+
+```text
+jscript
+print("Страница загружена!");
+
+let count = 0;
+let button = getElement("myBtn");
+
+button.onclick = function() {
+    count++;
+    setText("counter", count);
+    put("Нажатий: " + count);
+};
 
 text
 jscript
