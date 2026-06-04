@@ -7,6 +7,11 @@ body = False
 css_err = False
 html_err = False
 print("\033[32mСтарт компилятора\033[0m")
+def yprint(text):
+    print("\033[33mWARNING\033[0m")
+    print(f"\033[33m{text}\033[0m")
+    print("\033[33mWARNING\033[0m")
+
 with open("main.html", "r") as err:
     for line in err:
         if (line.startswith("endhtml")):
@@ -15,20 +20,23 @@ with open("main.html", "r") as err:
             css_err = True
         elif (line.startswith("html")):
             html_err = True
+        elif (line.startswith("<P")):
+            yprint("Найдена ошибка в html почему то написано <P> а не <p>")
+            exit()
+        elif (line.startswith("<H1")):
+            yprint("Найдена ошибка в html написано <H1> вместо <h1>")
+            exit()
+        elif (line.startswith("<Big")):
+            yprint("Найдена ошибка в html написано <Big вместо <big")
+            exit()
     if (body == False):
-        print("\033[33WARNING\033[0m")
-        print("\033[33m НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml\033[0m")
-        print("\033[33WARNING\033[0m")
+        yprint("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml")
         exit()
     elif (css_err == False):
-        print("\033[33WARNING\033[0m")
-        print("\033[33m НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic\033[0m")
-        print("\033[33WARNING\033[0m")
+        print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
         exit()
     elif (html_err == False):
-        print("\033[33WARNING\033[0m")
-        print("\033[33m ПОЧЕМУ НЕТУ html В ФАЙЛЕ\033[0m")
-        print("\033[33WARNING\033[0m")
+        yprint("ПОЧЕМУ НЕТУ html В ФАЙЛЕ")
 
 with open("main.html", "r") as file:
     del body, css_err, html_err
