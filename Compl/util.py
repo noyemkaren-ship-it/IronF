@@ -70,7 +70,6 @@ input[type="submit"]:active {
     transform: scale(0.98);
 }
 """
-
 css = False
 html = False
 script = False

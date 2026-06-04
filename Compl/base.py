@@ -1,5 +1,5 @@
 import os
-from util import base_css
+from Compl.util import base_css
 
 def baseCSS():
     with open("src/css/style.css", "w") as file:
