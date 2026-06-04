@@ -1,5 +1,6 @@
 import os
-
+body = False
+css_err = False
 from Compl.base import baseCSS, create_directories, appendf, create_basic_html, css_logic, create_js_clasic
 from Compl.util import *
 
@@ -20,31 +21,36 @@ with open("main.html", "r") as file:
     elif (css_err == False):
         print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
         exit()
+    
+    del body
+    del css_err
 
     for line in file:
         if (line.startswith("Imkdir ")):
             os.makedirs(line[7:])
             continue
-        if (line.startswith("html")):
+        elif (line.startswith("html")):
             html = True
             css = False
+            meta = False
             continue
-        if (line.startswith("jscript")):
+        elif (line.startswith("jscript")):
             script = True
             html = False
             css = False
+            meta = False
             continue
-        if (line.startswith("endhtml")):
+        elif (line.startswith("endhtml")):
             html = False
             appendf('src/index.html', "</body>\n")
             appendf('src/index.html', "</html>\n")
             continue
         elif (line.startswith("meta ")):
             name = line[5:]
-            create_basic_html(line)
+            create_basic_html(name)
             meta = True
             continue
-        if (line.startswith("css")):
+        elif (line.startswith("css")):
             css = True
             continue
         elif (line.startswith("basic")) and css == True:

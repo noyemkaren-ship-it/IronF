@@ -74,6 +74,4 @@ css = False
 html = False
 script = False
 meta = False
-body = False
-css_err = False
 name = ""
