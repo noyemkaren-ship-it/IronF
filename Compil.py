@@ -29,6 +29,13 @@ with open("main.html", "r") as err:
         elif (line.startswith("<Big")):
             yprint("Найдена ошибка в html написано <Big вместо <big")
             exit()
+        elif (line.startswith("fanction")):
+            yprint("КРИТИЧЕСКАЯ ОШИБКА, НАПИСАНО fanction, а не function")
+            exit()
+        elif (line.startswith("console.log")):
+            yprint("Ошибка не критичная но лучше вместо console.log используй более простой put")
+        elif (line.startswith("alert")):
+            yprint("Ошибка не критическая но лучге вместо alert используй print потому что так принято НО сайт все равно заработает")
     if (body == False):
         yprint("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml")
         exit()
