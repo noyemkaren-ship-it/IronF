@@ -6,6 +6,8 @@ create_js_clasic()
 body = False
 css_err = False
 
+print("Старт компилятора")
+
 with open("main.html", "r") as err:
     for line in err:
         if (line.startswith("endhtml")):
