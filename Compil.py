@@ -7,7 +7,6 @@ body = False
 css_err = False
 html_err = False
 print("\033[32mСтарт компилятора\033[0m")
-
 with open("main.html", "r") as err:
     for line in err:
         if (line.startswith("endhtml")):
@@ -79,6 +78,7 @@ with open("main.html", "r") as file:
         elif (script == True):
             appendf("src/scripts/main.js", line)
             continue
+
 
 print("\033[32mВсе прошло хорошо\033[0m")
 

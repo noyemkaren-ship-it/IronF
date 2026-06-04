@@ -25,11 +25,13 @@ html
 meta МойПервыйСайт
 <h1>Привет, мир!</h1>
 <p>IronF рулит!</p>
-<button>Нажми меня</button>
+<button id="myBtn">Нажми меня</button>
 endhtml
 
 jscript
-alert("Сайт готов!");
+onClick("myBtn", function() {
+    print("Сайт готов!");
+});
 2. Запусти компилятор:
 
 bash
@@ -99,37 +101,101 @@ endhtml
 
 ## 🎯 Упрощённый JavaScript (фишка IronF!)
 
-IronF автоматически добавляет полезные функции, чтобы тебе не приходилось писать скучный код:
+IronF автоматически добавляет 28 встроенных функций, чтобы тебе не приходилось писать скучный код.
+
+### 🪟 Окна и консоль
 
 | Функция | Что делает | Пример |
 |---------|-----------|--------|
-| `print(text)` | Показывает всплывающее окно | `print("Привет!")` |
-| `put(text)` | Выводит в консоль (для отладки) | `put("Клик по кнопке")` |
-| `getElement(id)` | Находит элемент на странице | `let btn = getElement("myButton")` |
-| `setText(id, text)` | Меняет текст внутри элемента | `setText("title", "Новый заголовок")` |
+| `print(text)` | Всплывающее окно | `print("Привет!")` |
+| `put(...args)` | Вывод в консоль | `put("Клик:", count)` |
+| `ask(text, default)` | Окно ввода текста | `let name = ask("Имя?", "Гость")` |
+| `confirm(text)` | Окно Да/Нет | `if(confirm("Удалить?")){...}` |
 
-**Пример использования:**
+### 🔍 Поиск элементов
 
-```text
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `gid(id)` | Найти по ID | `gid("myBtn")` |
+| `gq(selector)` | Найти по CSS селектору | `gq(".btn")` |
+| `gqa(selector)` | Найти все по селектору | `gqa("p")` |
+
+### ✏️ Работа с содержимым
+
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `txt(id, text)` | Установить текст | `txt("title", "Привет")` |
+| `html(id, html)` | Установить HTML | `html("list", "<li>1</li>")` |
+| `val(id, value)` | Получить/установить значение поля | `val("input", "Иван")` |
+
+### 🎨 CSS классы и стили
+
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `addC(id, class)` | Добавить класс | `addC("btn", "active")` |
+| `remC(id, class)` | Убрать класс | `remC("btn", "active")` |
+| `togC(id, class)` | Переключить класс | `togC("btn", "hidden")` |
+| `hide(id)` | Скрыть элемент | `hide("loader")` |
+| `show(id, display)` | Показать элемент | `show("loader", "flex")` |
+| `setCSS(id, styles)` | Установить стили | `setCSS("box", {color:"red"})` |
+
+### 🏗️ Создание элементов
+
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `el(tag, attrs, text)` | Создать элемент | `el("div", {class:"box"}, "Текст")` |
+| `app(parent, child)` | Добавить в родителя | `app("list", item)` |
+
+### 🌐 HTTP запросы
+
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `rget(url)` | GET запрос | `let users = await rget("/api/users")` |
+| `rpost(url, body)` | POST запрос | `await rpost("/api/user", {name:"Иван"})` |
+| `rput(url, body)` | PUT запрос | `await rput("/api/user/1", data)` |
+| `rdel(url)` | DELETE запрос | `await rdel("/api/user/1")` |
+
+### 💾 Хранилище
+
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `store(key, value)` | Сохранить/загрузить | `store("theme", "dark")` |
+| `storeDel(key)` | Удалить запись | `storeDel("theme")` |
+| `storeClear()` | Очистить всё | `storeClear()` |
+
+### 🛠️ Утилиты
+
+| Функция | Что делает | Пример |
+|---------|-----------|--------|
+| `wait(ms)` | Пауза в мс | `await wait(1000)` |
+| `rand(min, max)` | Случайное число | `rand(1, 100)` |
+| `isEmpty(v)` | Проверка на пустоту | `if(isEmpty(name)){...}` |
+| `onReady(fn)` | После загрузки DOM | `onReady(() => {...})` |
+| `onClick(id, fn)` | Обработчик клика | `onClick("btn", () => {...})` |
+
+### Полный пример с новыми функциями:
+
 jscript
-print("Страница загружена!");
-
 let count = 0;
-let button = getElement("myBtn");
 
-button.onclick = function() {
+onClick("myBtn", async function() {
     count++;
-    setText("counter", count);
+    txt("counter", count);
     put("Нажатий: " + count);
-};
+    
+    let data = await rget("/api/stats");
+    if(data.ok) {
+        put("Ответ сервера:", data.data);
+    }
+    
+    store("clicks", count);
+    print("Успешно!");
+});
 
-text
-jscript
-console.log("Сайт загружен");
-
-document.querySelector("button").onclick = function() {
-    alert("Кнопка нажата!");
-};
+onReady(function() {
+    let saved = store("clicks") || 0;
+    txt("counter", saved);
+});
 🛠️ Полный пример
 
 text
@@ -139,17 +205,34 @@ import my-styles.css
 
 html
 meta МойБлог
-<h1>Добро пожаловать в мой блог</h1>
-<p>Здесь будет интересный текст</p>
-<input type="text" placeholder="Твое имя">
-<button>Подписаться</button>
-endhtml
 
+<h1>Добро пожаловать в мой блог</h1> <p id="counter">Кликов: 0</p> <input type="text" id="name" placeholder="Твое имя"> <button id="subBtn">Подписаться</button> endhtml
 jscript
-let count = 0;
-document.querySelector("button").onclick = () => {
-    alert("Спасибо за подписку!");
-};
+let clicks = store("clicks") || 0;
+txt("counter", "Кликов: " + clicks);
+
+onClick("subBtn", async function() {
+let name = val("name");
+
+if(isEmpty(name)) {
+print("Введи имя!");
+return;
+}
+
+clicks++;
+txt("counter", "Кликов: " + clicks);
+store("clicks", clicks);
+
+let result = await rpost("/api/subscribe", {name: name});
+if(result.ok) {
+print(name + ", ты подписан!");
+hide("subBtn");
+txt("counter", "Готово!");
+}
+});
+
+text
+
 📂 Что получается на выходе
 
 После компиляции появляется папка src/:
@@ -195,4 +278,3 @@ IronEagle Company
 GitHub: @noyemkaren-ship-it
 
 Сделано с ❤️ для тех, кто начинает свой путь в вебе
-
