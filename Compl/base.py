@@ -50,3 +50,11 @@ def create_js_clasic():
         i.write("}\n\n")
         i.write("// Приветствие при загрузке\n")
         i.write("put('Проект создан на IronF Framework');\n")
+
+
+def create_basic_html(line):
+    create_html_start()
+    appendf("src/index.html", f"    <title>{line.strip()}</title>\n")
+    appendf('src/index.html', '<script src="scripts/main.js"></script>\n')
+    appendf('src/index.html', "</head>\n")
+    appendf('src/index.html', "<body>")

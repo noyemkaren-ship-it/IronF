@@ -1,4 +1,6 @@
-from Compl.base import baseCSS, create_directories, appendf, create_html_start, css_logic, create_js_clasic
+import os
+
+from Compl.base import baseCSS, create_directories, appendf, create_basic_html, css_logic, create_js_clasic
 from Compl.util import *
 
 create_directories()
@@ -20,6 +22,9 @@ with open("main.html", "r") as file:
         exit()
 
     for line in file:
+        if (line.startswith("Imkdir ")):
+            os.makedirs(line[7:])
+            continue
         if (line.startswith("html")):
             html = True
             css = False
@@ -36,11 +41,7 @@ with open("main.html", "r") as file:
             continue
         elif (line.startswith("meta ")):
             name = line[5:]
-            create_html_start()
-            appendf("src/index.html", f"    <title>{line.strip()}</title>\n")
-            appendf('src/index.html', '<script src="scripts/main.js"></script>\n')
-            appendf('src/index.html', "</head>\n")
-            appendf('src/index.html', "<body>")
+            create_basic_html(line)
             meta = True
             continue
         if (line.startswith("css")):
