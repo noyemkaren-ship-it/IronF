@@ -23,6 +23,9 @@ with open("main.html", "r") as err:
         elif (line.startswith("<P")):
             yprint("Найдена ошибка в html почему то написано <P> а не <p>")
             exit()
+        elif (line.startswith("jscripts")):
+            yprint("Пишется jscript, а не jscripts")
+            exit()
         elif (line.startswith("<H1")):
             yprint("Найдена ошибка в html написано <H1> вместо <h1>")
             exit()
@@ -61,7 +64,7 @@ with open("main.html", "r") as file:
             html = False
             css = False
             meta = False
-            continue
+            continue        
         elif (line.startswith("endhtml")):
             html = False
             appendf('src/index.html', "</body>\n")
