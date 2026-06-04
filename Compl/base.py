@@ -50,4 +50,3 @@ def create_js_clasic():
         i.write("}\n\n")
         i.write("// Приветствие при загрузке\n")
         i.write("put('Проект создан на IronF Framework');\n")
-        i.write("print('Добро пожаловать в IronF!');\n")
