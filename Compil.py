@@ -1,11 +1,10 @@
 import os
-body = False
-css_err = False
 from Compl.base import baseCSS, create_directories, appendf, create_basic_html, css_logic, create_js_clasic
 from Compl.util import *
-
 create_directories()
 create_js_clasic()
+body = False
+css_err = False
 
 with open("main.html", "r") as err:
     for line in err:
@@ -47,7 +46,7 @@ with open("main.html", "r") as file:
             continue
         elif (line.startswith("meta ")):
             name = line[5:]
-            create_basic_html(name)
+            create_basic_html(name.strip())
             meta = True
             continue
         elif (line.startswith("css")):
@@ -58,7 +57,8 @@ with open("main.html", "r") as file:
             baseCSS()
             continue
         elif (line.startswith("import ")) and css == True:
-            with open(line[7:], "r") as imp:
+            with open(line[7:].strip(), "r") as imp:
+                css = False
                 for eline in imp:
                     css_logic(eline)
         elif (css == True):
