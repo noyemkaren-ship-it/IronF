@@ -5,7 +5,6 @@ def baseCSS():
     with open("src/css/style.css", "w") as file:
         file.write(base_css)
 
-
 def create_html_start():
     with open("src/index.html", "w") as file:
         file.write('<!DOCTYPE html>\n')
@@ -50,7 +49,6 @@ def create_js_clasic():
         i.write("}\n\n")
         i.write("// Приветствие при загрузке\n")
         i.write("put('Проект создан на IronF Framework');\n")
-
 
 def create_basic_html(line):
     create_html_start()

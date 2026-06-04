@@ -6,7 +6,7 @@ create_js_clasic()
 body = False
 css_err = False
 html_err = False
-print("Старт компилятора")
+print("\033[32mСтарт компилятора\033[0m")
 
 with open("main.html", "r") as err:
     for line in err:
@@ -17,14 +17,13 @@ with open("main.html", "r") as err:
         elif (line.startswith("html")):
             html_err = True
     if (body == False):
-        print("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml")
+        print("\033[33m НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml\033[0m")
         exit()
     elif (css_err == False):
-        print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
+        print("\033[33m НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic\033[0m")
         exit()
     elif (html_err == False):
-        print("ПОЧЕМУ НЕТУ html В ФАЙЛЕ")
-    
+        print("\033[33m ПОЧЕМУ НЕТУ html В ФАЙЛЕ\033[0m")
 
 with open("main.html", "r") as file:
     del body
@@ -78,4 +77,5 @@ with open("main.html", "r") as file:
             appendf("src/scripts/main.js", line)
             continue
 
-            
+print("\033[32mВсе прошло хорошо\033[0m")
+
