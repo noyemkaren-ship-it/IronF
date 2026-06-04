@@ -17,13 +17,19 @@ with open("main.html", "r") as err:
         elif (line.startswith("html")):
             html_err = True
     if (body == False):
+        print("\033[33WARNING\033[0m")
         print("\033[33m НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml\033[0m")
+        print("\033[33WARNING\033[0m")
         exit()
     elif (css_err == False):
+        print("\033[33WARNING\033[0m")
         print("\033[33m НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic\033[0m")
+        print("\033[33WARNING\033[0m")
         exit()
     elif (html_err == False):
+        print("\033[33WARNING\033[0m")
         print("\033[33m ПОЧЕМУ НЕТУ html В ФАЙЛЕ\033[0m")
+        print("\033[33WARNING\033[0m")
 
 with open("main.html", "r") as file:
     del body, css_err, html_err
