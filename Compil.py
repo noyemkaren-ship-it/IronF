@@ -26,10 +26,7 @@ with open("main.html", "r") as err:
         print("\033[33m ПОЧЕМУ НЕТУ html В ФАЙЛЕ\033[0m")
 
 with open("main.html", "r") as file:
-    del body
-    del css_err
-    del html_err
-
+    del body, css_err, html_err
     for line in file:
         if (line.startswith("Imkdir ")):
             os.makedirs(line[7:])
