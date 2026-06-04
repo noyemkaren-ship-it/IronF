@@ -191,7 +191,7 @@ MIT — делай что хочешь, но автора упомяни.
 
 🙏 Автор
 
-Karen Gevorgyan
+IronEagle Company
 GitHub: @noyemkaren-ship-it
 
 Сделано с ❤️ для тех, кто начинает свой путь в вебе
