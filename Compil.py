@@ -5,7 +5,7 @@ create_directories()
 create_js_clasic()
 body = False
 css_err = False
-
+html_err = False
 print("Старт компилятора")
 
 with open("main.html", "r") as err:
@@ -14,17 +14,22 @@ with open("main.html", "r") as err:
             body = True
         elif (line.startswith("css")):
             css_err = True
-
-with open("main.html", "r") as file:
+        elif (line.startswith("html")):
+            html_err = True
     if (body == False):
         print("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml")
         exit()
     elif (css_err == False):
         print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
         exit()
+    elif (html_err == False):
+        print("ПОЧЕМУ НЕТУ html В ФАЙЛЕ")
     
+
+with open("main.html", "r") as file:
     del body
     del css_err
+    del html_err
 
     for line in file:
         if (line.startswith("Imkdir ")):
