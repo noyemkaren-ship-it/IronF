@@ -31,6 +31,14 @@ def css_logic(eline):
     else:
         appendf("src/css/style.css", eline)
 
+def yprint(text):
+    print("\033[33mWARNING\033[0m")
+    print(f"\033[33m{text}\033[0m")
+    print("\033[33mWARNING\033[0m")
+
+def create_button(text: str, fun: str):
+    appendf("src/index.html", f"<button onclick={fun}>{text}</button>")
+
 def create_js_clasic():
     with open("src/scripts/main.js", "w") as i:
         i.write('"use strict";\n')

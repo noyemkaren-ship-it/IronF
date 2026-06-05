@@ -1,16 +1,16 @@
 import os
-from Compl.base import baseCSS, create_directories, appendf, create_basic_html, css_logic, create_js_clasic
+from Compl.base import *
 from Compl.util import *
 create_directories()
 create_js_clasic()
 body = False
 css_err = False
 html_err = False
+btn = False
+fun_name = False
+btn_text = ""
 print("\033[32mСтарт компилятора\033[0m")
-def yprint(text):
-    print("\033[33mWARNING\033[0m")
-    print(f"\033[33m{text}\033[0m")
-    print("\033[33mWARNING\033[0m")
+
 
 with open("main.html", "r") as err:
     for line in err:
@@ -96,6 +96,16 @@ with open("main.html", "r") as file:
         elif (script == True):
             appendf("src/scripts/main.js", line)
             continue
+        elif (line.startswith("btn ")):
+            line = line[4:].strip()
+            fun_name = True
+            btn_text = line
+            continue
+        elif (fun_name == True):
+            create_button(btn_text, fun_name)
+            fun_name = False
+            continue
+            
 
 
 print("\033[32mВсе прошло хорошо\033[0m")
