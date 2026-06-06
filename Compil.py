@@ -7,8 +7,9 @@ body = False
 css_err = False
 html_err = False
 btn = False
-fun_name = False
+is_fun_name = False
 btn_text = ""
+fun_name = ""
 print("\033[32mСтарт компилятора\033[0m")
 
 
@@ -90,23 +91,20 @@ with open("main.html", "r") as file:
         elif (css == True):
             css_logic(line)
             continue
+        elif (line.startswith("btn ")):
+            btn_text = line[4:].strip()
+            is_fun_name = True
+            continue
+        elif (is_fun_name == True):
+            fun_name = line.strip()
+            create_button(btn_text, fun_name)
+            is_fun_name = False
+            continue
         elif (html == True) and (meta == True):
             appendf("src/index.html", line)
             continue
         elif (script == True):
             appendf("src/scripts/main.js", line)
             continue
-        elif (line.startswith("btn ")):
-            line = line[4:].strip()
-            fun_name = True
-            btn_text = line
-            continue
-        elif (fun_name == True):
-            create_button(btn_text, fun_name)
-            fun_name = False
-            continue
-            
-
 
 print("\033[32mВсе прошло хорошо\033[0m")
-

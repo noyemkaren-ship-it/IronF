@@ -37,7 +37,9 @@ def yprint(text):
     print("\033[33mWARNING\033[0m")
 
 def create_button(text: str, fun: str):
-    appendf("src/index.html", f"<button onclick={fun}>{text}</button>")
+    # Убираем скобки если они есть в имени функции
+    clean_fun = fun.strip().rstrip('()')
+    appendf("src/index.html", f'<button onclick="{clean_fun}()">{text}</button>')
 
 def create_js_clasic():
     with open("src/scripts/main.js", "w") as i:
