@@ -8,7 +8,7 @@ def baseCSS():
 def photoBaseCSS(photoName: str):
     with open("src/css/style.css", "w") as file:
         file.write(base_css2)
-        file.write(f"   background-image: url('{photoBaseCSS}');\n")
+        file.write(f"   background-image: url('{photoName}');\n")
         file.write(base_css1)
 
 def create_html_start():
