@@ -42,7 +42,7 @@ with open("main.html", "r") as err:
         elif (line.startswith("alert")):
             yprint("Ошибка не критическая, но лучше вместо alert используй print потому что так принято, НО сайт все равно заработает")
     if (body == False):
-        yprint("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endlhtml")
+        yprint("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endhtml")
         exit()
     elif (css_err == False):
         print("НАШЕЛ ОШИБКУ, НЕТ css НУ ХОТЯБЫ ДОБАВЬТЕ css и далее basic")
