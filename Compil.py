@@ -10,6 +10,7 @@ btn = False
 is_fun_name = False
 btn_text = ""
 fun_name = ""
+game = False
 print("\033[32mСтарт компилятора\033[0m")
 
 
@@ -52,6 +53,10 @@ with open("main.html", "r") as err:
 with open("main.html", "r") as file:
     del body, css_err, html_err
     for line in file:
+        if line.startswith("game"):
+            print("НАЙДЕНА ПЕРВАЯ СТРОКА game ПЕРЕКЛОЮЧАЮ В РЕЖИМ СОЗДАНИЯ ИГР")
+            game = True
+            break
         if (line.startswith("Imkdir ")):
             os.makedirs(line[7:])
             continue
@@ -106,5 +111,9 @@ with open("main.html", "r") as file:
         elif (script == True):
             appendf("src/scripts/main.js", line)
             continue
+
+
+if game:
+    print("\033[32mПроцесс начался, важно не забывайте все картинки и sprite перекидывать в папку static\033[0m")
 
 print("\033[32mВсе прошло хорошо\033[0m")
