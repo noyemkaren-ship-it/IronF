@@ -11,6 +11,7 @@ is_fun_name = False
 btn_text = ""
 fun_name = ""
 game = False
+mata_err = False
 print("\033[32mСтарт компилятора\033[0m")
 
 
@@ -20,6 +21,8 @@ with open("main.html", "r") as err:
             body = True
         elif (line.startswith("css")):
             css_err = True
+        elif (line.startswith("meta")):
+            mata_err = True
         elif (line.startswith("html")):
             html_err = True
         elif (line.startswith("<P")):
@@ -49,6 +52,8 @@ with open("main.html", "r") as err:
         exit()
     elif (html_err == False):
         yprint("ПОЧЕМУ НЕТУ html В ФАЙЛЕ")
+    elif (mata_err == False):
+        yprint("Отсуствует meta !!")
 
 with open("main.html", "r") as file:
     del body, css_err, html_err
