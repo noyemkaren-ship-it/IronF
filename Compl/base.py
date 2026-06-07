@@ -6,7 +6,7 @@ def baseCSS():
         file.write(base_css)
 
 def photoBaseCSS(photoName: str):
-    with open("/src/css/style.css", "w") as file:
+    with open("src/css/style.css", "w") as file:
         file.write(base_css2)
         file.write(f"   background-image: url('{photoBaseCSS}');\n")
         file.write(base_css1)
