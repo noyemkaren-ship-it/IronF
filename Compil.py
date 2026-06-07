@@ -56,7 +56,7 @@ with open("main.html", "r") as err:
         yprint("Отсуствует meta !!")
 
 with open("main.html", "r") as file:
-    del body, css_err, html_err
+    del body, css_err, html_err, mata_err
     for line in file:
         if line.startswith("game"):
             print("НАЙДЕНА ПЕРВАЯ СТРОКА game ПЕРЕКЛОЮЧАЮ В РЕЖИМ СОЗДАНИЯ ИГР")
@@ -89,9 +89,10 @@ with open("main.html", "r") as file:
         elif (line.startswith("css")):
             css = True
             continue
-        elif (line.startswith("basic")) and css == True:
+        elif (line.startswith("Pbasic ")) and css == True:
             css = False
-            baseCSS()
+            line = line[7:]
+            photoBaseCSS(line)
             continue
         elif (line.startswith("import ")) and css == True:
             with open(line[7:].strip(), "r") as imp:

@@ -1,9 +1,15 @@
 import os
-from Compl.util import base_css
+from Compl.util import base_css, base_css1, base_css2
 
 def baseCSS():
     with open("src/css/style.css", "w") as file:
         file.write(base_css)
+
+def photoBaseCSS(photoName: str):
+    with open("/src/css/style.css", "w") as file:
+        file.write(base_css2)
+        file.write(f"   background-image: url('{photoBaseCSS}');\n")
+        file.write(base_css1)
 
 def create_html_start():
     with open("src/index.html", "w") as file:
