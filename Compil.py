@@ -115,5 +115,9 @@ with open("main.html", "r") as file:
 
 if game:
     print("\033[32mПроцесс начался, важно не забывайте все картинки и sprite перекидывать в папку static\033[0m")
+    with open("main.html", "r") as file:
+        if (line.startswith("csss")):
+            print("Начинию скан CSS")
+    
 
 print("\033[32mВсе прошло хорошо\033[0m")

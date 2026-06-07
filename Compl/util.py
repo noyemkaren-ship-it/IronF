@@ -38,6 +38,10 @@ img {
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.bigimg {
+    max-width: 300%;
+}
+
 img:hover {
     transform: scale(1.02);
 }
