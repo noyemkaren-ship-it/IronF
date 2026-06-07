@@ -8,8 +8,13 @@ def baseCSS():
 def photoBaseCSS(photoName: str):
     with open("src/css/style.css", "w") as file:
         file.write(base_css2)
-        file.write(f"   background-image: url('{photoName}');\n")
+        file.write(f"    background-image: url('{photoName.strip()}');\n")
+        file.write("    background-repeat: no-repeat;\n")
+        file.write("    background-position: center center;\n")
+        file.write("    background-size: cover;\n")
+        file.write("    background-attachment: fixed;\n")
         file.write(base_css1)
+
 
 def create_html_start():
     with open("src/index.html", "w") as file:
