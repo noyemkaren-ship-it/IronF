@@ -29,10 +29,13 @@ basic
 html
 meta МойПервыйСайт
 
-<h1>Привет, мир!</h1> <p>IronF рулит!</p> btn Нажми меня myFunc() endhtml
+<h1>Привет, мир!</h1>
+<p>IronF рулит!</p>
+btn Нажми меня
+myFunc() endhtml
 jscript
 function myFunc() {
-print("Сайт готов!");
+    print("Сайт готов!");
 }
 
 Сохрани файл как main.html в папку с IronF.
