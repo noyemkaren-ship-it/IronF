@@ -39,7 +39,14 @@ img {
 }
 
 .bigimg {
-    max-width: 300%;
+    width: 150%;
+    max-width: 150%;
+    height: auto;
+    display: block;
+    margin: 30px -25%;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 img:hover {
