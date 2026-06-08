@@ -53,6 +53,12 @@ with open("main.html", "r") as err:
             bprinte("   текст")
             bprinte("</p>")
             bprinte("Надеюсь вы запомнили!")
+        elif (line.strip().startswith("print(")) or ("print(" in line.strip()):
+            if (line.strip().endswith(");")):
+                pass
+            else:
+                yprint("ВНИМАНИЯ У print В КОНЦЕ ОТСУСТВОЕТ ;")
+                exit()
         elif (line.startswith("<h1 >")):
             bprinte("Не ошипка НО почему у теюя <h1 > почему тут пусто скорее всегораньше был какой то параметр у h1 но влюбом случае снизу написал как исправить")
             bprinte("<h1 > -> <h1>")
