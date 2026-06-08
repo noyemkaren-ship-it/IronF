@@ -5,6 +5,9 @@ def baseCSS():
     with open("src/css/style.css", "w") as file:
         file.write(base_css)
 
+def bprinte(text):
+    print(f"\033[94m{text}\033[0m")
+
 def photoBaseCSS(photoName: str):
     with open("src/css/style.css", "w") as file:
         file.write(base_css2)

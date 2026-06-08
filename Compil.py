@@ -13,8 +13,6 @@ fun_name = ""
 game = False
 mata_err = False
 print("\033[32mСтарт компилятора\033[0m")
-def bprinte(text):
-    print(f"\033[94m{text}\033[0m")
 
 
 with open("main.html", "r") as err:
@@ -55,6 +53,9 @@ with open("main.html", "r") as err:
             bprinte("   текст")
             bprinte("</p>")
             bprinte("Надеюсь вы запомнили!")
+        elif (line.startswith("<h1 >")):
+            bprinte("Не ошипка НО почему у теюя <h1 > почему тут пусто скорее всегораньше был какой то параметр у h1 но влюбом случае снизу написал как исправить")
+            bprinte("<h1 > -> <h1>")
     if (body == False):
         yprint("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endhtml")
         exit()
