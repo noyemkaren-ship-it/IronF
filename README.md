@@ -34,7 +34,8 @@ meta МойПервыйСайт
 <h1>Привет, мир!</h1>
 <p>IronF рулит!</p>
 btn Нажми меня
-myFunc() endhtml
+myFunc() 
+endhtml
 jscript
 function myFunc() {
     print("Сайт готов!");
