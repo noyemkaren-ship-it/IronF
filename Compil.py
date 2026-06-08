@@ -13,6 +13,8 @@ fun_name = ""
 game = False
 mata_err = False
 print("\033[32mСтарт компилятора\033[0m")
+def bprinte(text):
+    print(f"\033[94m{text}\033[0m")
 
 
 with open("main.html", "r") as err:
@@ -37,6 +39,9 @@ with open("main.html", "r") as err:
         elif (line.startswith("<Big")):
             yprint("Найдена ошибка в html написано <Big вместо <big")
             exit()
+        elif (line.strip().startswith("pipint")):
+            yprint("Найдине КРИТИЧЕСКАЯ ОШИБКА пишется print а не pipint")
+            exit()
         elif (line.startswith("fanction")):
             yprint("КРИТИЧЕСКАЯ ОШИБКА, НАПИСАНО fanction, а не function")
             exit()
@@ -44,6 +49,12 @@ with open("main.html", "r") as err:
             yprint("Ошибка не критичная, но лучше вместо console.log используй более простой put")
         elif (line.startswith("alert")):
             yprint("Ошибка не критическая, но лучше вместо alert используй print потому что так принято, НО сайт все равно заработает")
+        elif (line.startswith("<p>")) and (line.strip().endswith("/p>")):
+            bprinte("Найдена не желательная строчка это не ошибка ,но дело в том что в коде для красоты кода нужно писать так <p> и остальные теги")
+            bprinte("<p>")
+            bprinte("   текст")
+            bprinte("</p>")
+            bprinte("Надеюсь вы запомнили!")
     if (body == False):
         yprint("НАШЕЛ ОШИБКИ В КОДЕ НЕТУ endhtml")
         exit()
