@@ -11,7 +11,7 @@ is_fun_name = False
 btn_text = ""
 fun_name = ""
 game = False
-mata_err = False
+two = False
 print("\033[32mСтарт компилятора\033[0m")
 
 
@@ -25,9 +25,21 @@ with open("main.html", "r") as err:
             mata_err = True
         elif (line.startswith("html")):
             html_err = True
+        elif ('"' in line) and ("'" in line):
+            bprinte("Вижу кавычки надеюсь что вы не забыли закрыть их ''")
         elif (line.startswith("<P")):
             yprint("Найдена ошибка в html почему то написано <P> а не <p>")
             exit()
+        elif (line.strip().startswith("put(")):
+            if (line.strip().endswith(";")):
+                pass
+            else:
+                yprint("КАЖЕТСЯ Я НАШЕЛ ОШИБКУ В put В КОНЦЕ НЕТУ ;, НО БЛОКИРОВАТЬ НЕ БУДУ ВОЗМОЖНО Я, ЧТО ТО НЕ ТАК ПОНЯЛ")
+        elif (line.strip().startswith("let")) or (line.strip().startswith("var")):
+            if (line.strip().endswith(";")):
+                pass 
+            else:
+                yprint("Кажется вы забили ; в обьявлении переменных используя var или let я их не различаю, простите:)")
         elif (line.startswith("jscripts")):
             yprint("Пишется jscript, а не jscripts")
             exit()
