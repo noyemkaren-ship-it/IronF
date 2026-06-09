@@ -19,7 +19,7 @@ with open("main.html", "r") as err:
     for line in err:
         if (line.startswith("endhtml")):
             body = True
-        elif (line.stript().startswith("function")):
+        elif (line.strip().startswith("function")):
             if ( "(" in line):
                 pass 
             else:
