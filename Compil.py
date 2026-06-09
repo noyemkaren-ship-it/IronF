@@ -19,6 +19,16 @@ with open("main.html", "r") as err:
     for line in err:
         if (line.startswith("endhtml")):
             body = True
+        elif (line.stript().startswith("function")):
+            if ( "(" in line):
+                pass 
+            else:
+                yprint("ТАК КАЖЕТСЯ ИЛИ ВЫ В function ЗАБЫЛИ СКОБКИ")
+        elif ("<h1>" in line) and ("</h1>" in line):
+            bprinte("ЭТО НЕ ОШИБКА, НО ЛУЧШЕ ВМЕСТО <h1> текст </h1> писать:")
+            bprinte("<h1>")
+            bprinte("   Текст")
+            bprinte("</h1>")
         elif (line.startswith("css")):
             css_err = True
         elif (line.startswith("meta")):
