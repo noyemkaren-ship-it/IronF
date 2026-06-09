@@ -35,8 +35,6 @@ with open("main.html", "r") as err:
             mata_err = True
         elif (line.startswith("html")):
             html_err = True
-        elif ('"' in line) and ("'" in line):
-            bprinte("Вижу кавычки надеюсь что вы не забыли закрыть их ''")
         elif (line.startswith("<P")):
             yprint("Найдена ошибка в html почему то написано <P> а не <p>")
             exit()
