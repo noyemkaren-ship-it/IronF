@@ -150,6 +150,9 @@ with open("main.html", "r") as file:
             is_fun_name = False
             continue
         elif (html == True) and (meta == True):
+            if (line.startswith("Iimport ")):
+                appendf('src/index.html', f'<script src="scripts/{line[8:].strip()}"></script>\n')
+                continue
             appendf("src/index.html", line)
             continue
         elif (script == True):
